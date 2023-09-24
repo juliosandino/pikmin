@@ -25,8 +25,6 @@
 #define SENSOR_TYPE DHT_TYPE_DHT11
 #define MOISTURE_SENSOR_ADC ADC1_CHANNEL_7
 #define TEMP_SENSOR_PIN GPIO_NUM_4
-#define CONFIG_SDA_GPIO 23
-#define CONFIG_SCL_GPIO 22
 
 void sensor_task(void *pvParameters) {
     /*

@@ -17,6 +17,8 @@
 // Local includes
 #include "sensor_manager.h"
 
+#define CONFIG_SDA_GPIO 23
+#define CONFIG_SCL_GPIO 22
 #define FLOAT_TO_INT(x) ((x)>=0?(int)((x)+0.5):(int)((x)-0.5))
 
 void display_sensor_data_task(void *pvParameters) {
