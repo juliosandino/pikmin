@@ -11,7 +11,8 @@
 			"ssd1306.h": "c",
 			"font8x8_basic.h": "c",
 			"esp_log.h": "c",
-			"main.c": "c"
+			"main.c": "c",
+			"queue.h": "c"
 		}
 	}
 }
