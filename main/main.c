@@ -85,6 +85,41 @@ void sensor_task(void *pvParamaters) {
     }
 }
 
+int read_temp_sensor(float* temperature, float* humidity) {
+    /*
+    Reads temperature and humidity from a DHT11 sensor
+
+    param temperature: pointer to float to store temperature
+    param humidity: pointer to float to store humidity
+    */
+    // function_tag
+    char* log_tag = "DHT11";
+
+    // Read sensor data
+    int ret = dht_read_float_data(SENSOR_TYPE, TEMP_SENSOR_PIN, humidity, temperature);
+    if (ret == ESP_OK) {
+        ESP_LOGI(log_tag, "Humidity: %.1f%% Temp: %.1fC", *humidity, *temperature);
+    } else {
+        ESP_LOGI(log_tag, "Could not read data from sensor");
+    }
+
+    return ret;
+}
+
+void read_moisture_sensor(int* moisture) {
+    /*
+    Reads moisture from a capacitive soil moisture sensor
+
+    param moisture: pointer to int to store moisture
+    */
+    // function_tag (Capactive Soil Moisture Sensor v1.2)
+    char* log_tag = "CSMSv1.2";
+
+    // Read sensor data
+    *moisture = adc1_get_raw(MOISTURE_SENSOR_ADC);
+    ESP_LOGI(log_tag, "Moisture Sensor raw value: %d", *moisture);
+}
+
 void display_sensor_data_task(void *pvParameters) {
     /*
     /This task displays sensor data to the OLED display
